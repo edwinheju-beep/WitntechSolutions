@@ -63,12 +63,12 @@ height:100%;
 border-radius:50%;
 border:4px solid transparent;
 border-top:4px solid #2563eb;
-border-right:4px solid #60a5fa;
+border-right:4px solid #2563eb;
 animation:spin 1s linear infinite;
 }
 
 .loader span:nth-child(2){
-border-top:4px solid #93c5fd;
+border-top:4px solid #60a5fa;
 border-right:4px solid #2563eb;
 animation-direction:reverse;
 }
@@ -103,7 +103,7 @@ color:#6b7280;
 
 .btn{
 margin-top:20px;
-background:#2563eb;
+background:#2563eb !important;
 color:white;
 padding:14px 24px;
 border-radius:12px;
@@ -111,6 +111,8 @@ border:none;
 cursor:pointer;
 font-size:15px;
 transition:.3s;
+appearance:none;
+-webkit-appearance:none;
 }
 
 .btn:hover{
@@ -147,12 +149,20 @@ transform:translateY(-3px);
 box-shadow:0 10px 20px rgba(0,0,0,0.05);
 }
 
+footer{
+margin-top:60px;
+padding:20px;
+text-align:center;
+color:#6b7280;
+font-size:12px;
+}
+
 @media(max-width:700px){
 .hero{
 grid-template-columns:1fr;
 }
 .features{
-grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
 }
 }
 </style>
@@ -179,15 +189,13 @@ grid-template-columns:1fr;
 <div>
 <h1>Wintech Solutions</h1>
 <p>Sistema de gestión de inventario</p>
-
 <div class="rating">★★★★★ 5.0</div>
 <div class="categories">Productividad • Negocios</div>
-
 </div>
 
 </div>
 
-<button class="btn" onclick="descargar()">Descargar</button>
+<button class="btn" id="btn" onclick="descargar()">Descargar</button>
 
 </div>
 
@@ -203,50 +211,38 @@ grid-template-columns:1fr;
 
 <div class="features">
 
-<div class="card">
-<strong>Usuarios</strong>
-<p>Gestión de accesos y permisos</p>
-</div>
-
-<div class="card">
-<strong>Inventario</strong>
-<p>Control de stock en tiempo real</p>
-</div>
-
-<div class="card">
-<strong>Ventas</strong>
-<p>Corrección de errores</p>
-</div>
-
-<div class="card">
-<strong>Multiusuario</strong>
-<p>Uso simultáneo sin conflictos</p>
-</div>
-
-<div class="card">
-<strong>Productos</strong>
-<p>Gestión del catálogo</p>
-</div>
-
-<div class="card">
-<strong>Estabilidad</strong>
-<p>Sistema confiable</p>
-</div>
+<div class="card"><strong>Usuarios</strong><p>Gestión de accesos y permisos</p></div>
+<div class="card"><strong>Inventario</strong><p>Control de stock en tiempo real</p></div>
+<div class="card"><strong>Ventas</strong><p>Corrección de errores</p></div>
+<div class="card"><strong>Multiusuario</strong><p>Uso simultáneo sin conflictos</p></div>
+<div class="card"><strong>Productos</strong><p>Gestión del catálogo</p></div>
+<div class="card"><strong>Estabilidad</strong><p>Sistema confiable</p></div>
 
 </div>
 
 </div>
 
 </div>
+
+<footer>
+© 2026 Wintech Solutions — Developed by Edwin Juárez
+</footer>
 
 <script>
 function descargar(){
 const loader=document.getElementById("loader");
+const btn=document.getElementById("btn");
+
 loader.style.display="block";
+btn.innerText="Instalando...";
+btn.disabled=true;
+
+window.location.href="https://github.com/edwinheju-beep/WitntechSolutions/releases/download/v1.0/wintech-solutions.apk";
 
 setTimeout(()=>{
-window.location.href="https://github.com/edwinheju-beep/WitntechSolutions/releases/download/v1.0/wintech-solutions.apk";
-},4000);
+btn.innerText="Instalado ✓";
+loader.style.display="none";
+},5000);
 }
 </script>
 
