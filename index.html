@@ -8,20 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+html{scroll-behavior:smooth}
+
 body{
 margin:0;
 font-family:'Inter',sans-serif;
-background:linear-gradient(to bottom,#eef2f7,#f9fafb);
-color:#111827
+background:radial-gradient(circle at top,#e6edf7,#f9fafb);
+color:#111827;
+overflow-x:hidden
 }
 
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 20px;
-background:rgba(255,255,255,0.8);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
 border-bottom:1px solid #e5e7eb;
 position:sticky;
 top:0;
@@ -34,18 +38,26 @@ z-index:100
 .nav a{margin-left:15px;text-decoration:none;color:#374151;font-size:14px;transition:.2s}
 .nav a:hover{color:#111827}
 
-.container{max-width:1100px;margin:auto;padding:30px 20px}
+/* CONTAINER */
+.container{max-width:1100px;margin:auto;padding:40px 20px}
 
+/* HERO */
 .hero{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:40px;
 align-items:center;
-min-height:70vh
+min-height:80vh;
+animation:fadeScale 1s ease
+}
+
+@keyframes fadeScale{
+from{opacity:0;transform:scale(.97)}
+to{opacity:1;transform:scale(1)}
 }
 
 .hero-text h1{
-font-size:40px;
+font-size:42px;
 font-weight:600;
 margin-bottom:10px
 }
@@ -56,8 +68,8 @@ margin-bottom:10px
 .btn{
 background:#2563eb;
 color:white;
-padding:14px 26px;
-border-radius:10px;
+padding:14px 28px;
+border-radius:12px;
 text-decoration:none;
 display:inline-block;
 margin-top:20px;
@@ -73,43 +85,53 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
 transition:.6s
 }
 
-.btn:hover::before{
-left:100%
-}
+.btn:hover::before{left:100%}
 
 .btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(37,99,235,.3);
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 15px 35px rgba(37,99,235,.3);
 background:#1d4ed8
 }
 
+/* VIDEO */
 .hero video{
 width:100%;
-border-radius:16px;
+border-radius:18px;
 border:1px solid #e5e7eb;
-box-shadow:0 20px 40px rgba(0,0,0,0.05)
+box-shadow:0 30px 60px rgba(0,0,0,.08)
 }
 
-.section{margin-top:90px}
+/* SECCIONES */
+.section{
+margin-top:100px;
+opacity:0;
+transform:translateY(40px);
+transition:all .9s ease
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0)
+}
 
 /* FEATURES */
 .features{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px
+gap:22px
 }
 
 .card{
 background:white;
 padding:22px;
-border-radius:14px;
+border-radius:16px;
 border:1px solid #e5e7eb;
 opacity:0;
-transform:translateY(20px);
+transform:translateY(25px);
 transition:.5s
 }
 
@@ -119,12 +141,12 @@ transform:translateY(0)
 }
 
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 40px rgba(0,0,0,0.06)
+transform:translateY(-6px) scale(1.01);
+box-shadow:0 25px 50px rgba(0,0,0,.07)
 }
 
 .icon{
-width:28px;
+width:30px;
 margin-bottom:10px;
 color:#2563eb
 }
@@ -139,48 +161,39 @@ grid-template-columns:repeat(auto-fit,minmax(280px,1fr))
 .business-box{
 background:white;
 padding:22px;
-border-radius:14px;
+border-radius:16px;
 border:1px solid #e5e7eb;
 transition:.3s
 }
 
 .business-box:hover{
 transform:translateY(-5px);
-box-shadow:0 20px 40px rgba(0,0,0,0.05)
+box-shadow:0 20px 40px rgba(0,0,0,.06)
 }
 
+/* VIDEO DEMO */
 .video-demo video{
 width:100%;
-border-radius:14px;
+border-radius:16px;
 border:1px solid #e5e7eb
 }
 
+/* FOOTER */
 footer{
-margin-top:70px;
-padding:25px;
+margin-top:80px;
+padding:30px;
 text-align:center;
 color:#6b7280;
 font-size:13px
 }
 
 .dev{
-margin-top:8px;
+margin-top:10px;
 font-size:11px;
 color:#9ca3af
 }
 
-/* ANIMACIÓN GENERAL */
-.fade-up{
-opacity:0;
-transform:translateY(30px);
-transition:all .8s ease
-}
-
-.fade-up.show{
-opacity:1;
-transform:translateY(0)
-}
-
+/* RESPONSIVE */
 @media(max-width:800px){
 .hero{
 grid-template-columns:1fr;
@@ -208,7 +221,7 @@ font-size:30px
 
 <div class="container">
 
-<section class="hero fade-up">
+<section class="hero">
 <div class="hero-text">
 <h1>Sistema de gestión de inventario</h1>
 <p>Control total de stock, usuarios y operaciones en tiempo real.</p>
@@ -225,84 +238,27 @@ Multiusuario • Permisos • Tiempo real
 </video>
 </section>
 
-<section class="section fade-up" id="features">
+<section class="section" id="features">
 <h2>Características</h2>
 
 <div class="features">
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3z"/>
-</svg>
-<h3>Usuarios</h3>
-<p>Control de accesos y permisos.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3z"/></svg><h3>Usuarios</h3><p>Control de accesos y permisos.</p></div>
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M3 3h18v4H3V3zm0 7h18v11H3V10z"/>
-</svg>
-<h3>Inventario</h3>
-<p>Stock actualizado automáticamente.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 3h18v4H3V3zm0 7h18v11H3V10z"/></svg><h3>Inventario</h3><p>Stock actualizado automáticamente.</p></div>
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M12 8v4l3 3"/>
-</svg>
-<h3>Ventas</h3>
-<p>Corrección y reversión de errores.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/></svg><h3>Ventas</h3><p>Corrección y reversión de errores.</p></div>
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M4 4h16v16H4z"/>
-</svg>
-<h3>Multiusuario</h3>
-<p>Uso simultáneo sin conflictos.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg><h3>Multiusuario</h3><p>Uso simultáneo sin conflictos.</p></div>
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M5 12h14M12 5v14"/>
-</svg>
-<h3>Productos</h3>
-<p>Control dinámico del catálogo.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg><h3>Productos</h3><p>Control dinámico del catálogo.</p></div>
 
-<div class="card">
-<svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-<path d="M12 3v18M3 12h18"/>
-</svg>
-<h3>Estabilidad</h3>
-<p>Sistema confiable.</p>
-</div>
+<div class="card"><svg class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg><h3>Estabilidad</h3><p>Sistema confiable.</p></div>
 
 </div>
 </section>
 
-<section class="section fade-up">
-<h2>Uso</h2>
-
-<div class="business">
-<div class="business-box">
-<h3>Control</h3>
-<p>Gestión centralizada.</p>
-</div>
-
-<div class="business-box">
-<h3>Escalabilidad</h3>
-<p>Adaptable a cualquier negocio.</p>
-</div>
-
-<div class="business-box">
-<h3>Eficiencia</h3>
-<p>Reduce errores operativos.</p>
-</div>
-</div>
-</section>
-
-<section class="section video-demo fade-up" id="demo">
+<section class="section video-demo" id="demo">
 <h2>Demostración</h2>
 <video controls>
 <source src="promo.mp4" type="video/mp4">
@@ -317,22 +273,22 @@ Multiusuario • Permisos • Tiempo real
 </footer>
 
 <script>
-const elements=document.querySelectorAll('.fade-up');
+const sections=document.querySelectorAll('.section');
 const cards=document.querySelectorAll('.card');
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
-entry.target.classList.add('show');
+entry.target.classList.add('show')
 }
-});
-});
+})
+},{threshold:0.2})
 
-elements.forEach(el=>observer.observe(el));
+sections.forEach(s=>observer.observe(s))
 
 cards.forEach((card,i)=>{
-setTimeout(()=>{card.classList.add('show')},150*i);
-});
+setTimeout(()=>{card.classList.add('show')},150*i)
+})
 </script>
 
 </body>
