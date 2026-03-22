@@ -22,6 +22,9 @@ header {
   padding: 20px 40px;
   background: white;
   border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo-title {
@@ -40,6 +43,11 @@ header {
   text-decoration: none;
   color: #374151;
   font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: #111827;
 }
 
 .container {
@@ -73,6 +81,13 @@ header {
   text-decoration: none;
   font-size: 16px;
   display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.2);
+  background: #1d4ed8;
 }
 
 .hero video {
@@ -83,11 +98,6 @@ header {
 
 .section {
   margin-top: 80px;
-}
-
-.section h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
 }
 
 .features {
@@ -101,12 +111,12 @@ header {
   padding: 25px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
+  transition: 0.3s;
 }
 
-.video-demo video {
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .business {
@@ -118,6 +128,18 @@ header {
 .business-box {
   background: white;
   padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s;
+}
+
+.business-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.video-demo video {
+  width: 100%;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
 }
@@ -134,6 +156,17 @@ footer {
   margin-top: 10px;
   font-size: 12px;
   color: #9ca3af;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 800px) {
@@ -160,12 +193,11 @@ footer {
 
 <div class="container">
 
-<section class="hero">
+<section class="hero fade-up">
   <div class="hero-text">
-    <h1>Sistema profesional de gestión de inventario</h1>
+    <h1>Sistema de gestión de inventario</h1>
     <p>
-      Plataforma diseñada para entornos multiusuario con control avanzado de stock, 
-      usuarios y operaciones en tiempo real.
+      Plataforma para control de stock, usuarios y operaciones en tiempo real.
     </p>
 
     <a class="btn" href="https://github.com/edwinheju-beep/WitntechSolutions/releases/download/v1.0/wintech-solutions.apk">
@@ -173,7 +205,7 @@ footer {
     </a>
 
     <p style="margin-top:10px; font-size:14px; color:#6b7280;">
-      Multiusuario • Control de permisos • Sincronización en tiempo real
+      Multiusuario • Permisos • Tiempo real
     </p>
   </div>
 
@@ -182,66 +214,64 @@ footer {
   </video>
 </section>
 
-<section class="section" id="features">
-  <h2>Características principales</h2>
+<section class="section fade-up" id="features">
+  <h2>Características</h2>
 
   <div class="features">
-
     <div class="card">
-      <h3>Gestión de usuarios</h3>
-      <p>Control completo de accesos y permisos por usuario.</p>
+      <h3>Usuarios</h3>
+      <p>Control de accesos y permisos.</p>
     </div>
 
     <div class="card">
-      <h3>Inventario en tiempo real</h3>
-      <p>Actualización automática de stock en cada operación.</p>
+      <h3>Inventario</h3>
+      <p>Stock actualizado automáticamente.</p>
     </div>
 
     <div class="card">
-      <h3>Corrección de ventas</h3>
-      <p>Reversión de ventas erróneas con restauración de inventario.</p>
+      <h3>Ventas</h3>
+      <p>Corrección de errores y reversión.</p>
     </div>
 
     <div class="card">
-      <h3>Operación multiusuario</h3>
-      <p>Uso simultáneo sin conflictos en múltiples dispositivos.</p>
+      <h3>Multiusuario</h3>
+      <p>Uso simultáneo sin conflictos.</p>
     </div>
 
     <div class="card">
-      <h3>Gestión de productos</h3>
-      <p>Activación y desactivación dinámica según disponibilidad.</p>
+      <h3>Productos</h3>
+      <p>Activación y control dinámico.</p>
     </div>
 
     <div class="card">
-      <h3>Seguridad y estabilidad</h3>
-      <p>Sistema confiable para entornos comerciales.</p>
+      <h3>Estabilidad</h3>
+      <p>Sistema confiable.</p>
     </div>
-
   </div>
 </section>
 
-<section class="section">
-  <h2>Diseñado para negocios reales</h2>
+<section class="section fade-up">
+  <h2>Uso</h2>
 
   <div class="business">
     <div class="business-box">
-      <h3>Control total</h3>
-      <p>Administra inventario, usuarios y ventas desde un solo sistema.</p>
+      <h3>Control</h3>
+      <p>Gestión centralizada del inventario.</p>
     </div>
 
     <div class="business-box">
-      <h3>Escalable</h3>
-      <p>Preparado para crecer junto con tu negocio.</p>
+      <h3>Escalabilidad</h3>
+      <p>Adaptable a diferentes tamaños de negocio.</p>
     </div>
 
     <div class="business-box">
-      <h3>Eficiencia operativa</h3>
-      <p>Reduce errores y mejora la productividad del equipo.</p>
+      <h3>Eficiencia</h3>
+      <p>Reduce errores operativos.</p>
     </div>
   </div>
 </section>
 
-<section class="section video-demo" id="demo">
+<section class="section video-demo fade-up" id="demo">
   <h2>Demostración</h2>
 
   <video controls>
@@ -249,18 +279,32 @@ footer {
   </video>
 </section>
 
-<section class="section">
+<section class="section fade-up">
   <h2>Información</h2>
   <p>Versión 1.0</p>
-  <p>Actualizado 2026</p>
+  <p>2026</p>
 </section>
 
 </div>
 
 <footer>
   © 2026 Wintech Solutions
-  <div class="dev">Developed by Edwin Jaures</div>
+  <div class="dev">Developed by Edwin Juárez</div>
 </footer>
+
+<script>
+const elements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
