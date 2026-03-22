@@ -5,170 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wintech Solutions</title>
 <link rel="icon" href="logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
-font-family:'Inter',sans-serif;
+font-family:Arial, sans-serif;
 background:#f9fafb;
 color:#111827;
-}
-
-header{
 display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-background:white;
-border-bottom:1px solid #e5e7eb;
-position:sticky;
-top:0;
-z-index:100;
-}
-
-.logo-title{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:600;
-}
-
-.logo-title img{
-width:32px;
-border-radius:8px;
-}
-
-.nav{
-display:flex;
-gap:20px;
-}
-
-.nav a{
-text-decoration:none;
-color:#374151;
-font-size:14px;
+justify-content:center;
 }
 
 .container{
-max-width:1000px;
-margin:auto;
+max-width:900px;
+width:100%;
 padding:30px 20px;
 }
 
-.hero{
+/* APP HEADER */
+.app-header{
 display:flex;
-flex-direction:column;
+align-items:center;
 gap:15px;
 }
 
-.hero h1{
-font-size:28px;
-margin:0;
+.app-header img{
+width:70px;
+height:70px;
+border-radius:16px;
 }
 
-.hero p{
+.app-info h1{
+margin:0;
+font-size:22px;
+}
+
+.app-info p{
+margin:5px 0 0;
 color:#6b7280;
-margin:0;
+font-size:14px;
 }
 
-.rating{
-display:flex;
-align-items:center;
-gap:8px;
-margin-top:5px;
-}
-
-.star{
-color:#fbbf24;
-font-size:16px;
-}
-
+/* BOTÓN */
 .btn{
-background:#111827;
+margin-top:20px;
+background:#2563eb;
 color:white;
 padding:12px 20px;
+border:none;
 border-radius:10px;
-text-decoration:none;
-display:inline-block;
+cursor:pointer;
 font-size:14px;
-margin-top:10px;
-width:max-content;
-transition:.3s;
 }
 
-.btn:hover{
-background:#000;
-transform:scale(1.03);
-}
-
-.hero video{
-width:100%;
+/* CARGA */
+.loader{
 margin-top:20px;
+display:none;
+justify-content:center;
+}
+
+.loader img{
+width:80px;
+animation:spin 1.2s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+/* VIDEO */
+.video{
+margin-top:30px;
+}
+
+.video video{
+width:100%;
 border-radius:12px;
 border:1px solid #e5e7eb;
 }
 
-.section{
-margin-top:50px;
-}
-
+/* FEATURES */
 .features{
+margin-top:30px;
 display:grid;
-grid-template-columns:1fr;
 gap:15px;
 }
 
 .card{
-display:flex;
-align-items:center;
-gap:15px;
 background:white;
 padding:15px;
 border-radius:12px;
 border:1px solid #e5e7eb;
-transition:.2s;
 }
 
-.card:hover{
-background:#f3f4f6;
+/* DESKTOP */
+@media(min-width:700px){
+
+.app-header{
+align-items:flex-start;
 }
 
-.icon{
-width:28px;
-height:28px;
-color:#2563eb;
-}
-
-.video-demo video{
-width:100%;
-border-radius:12px;
-border:1px solid #e5e7eb;
-}
-
-footer{
-margin-top:60px;
-padding:20px;
-text-align:center;
-color:#6b7280;
-font-size:12px;
-}
-
-.dev{
-margin-top:5px;
-font-size:11px;
-}
-
-@media(min-width:800px){
-
-.hero{
-flex-direction:row;
-align-items:center;
-justify-content:space-between;
-}
-
-.hero-text{
-max-width:450px;
+.video{
+margin-top:40px;
 }
 
 .features{
@@ -181,123 +121,73 @@ grid-template-columns:repeat(2,1fr);
 
 <body>
 
-<header>
-<div class="logo-title">
-<img src="logo.png">
-<span>Wintech Solutions</span>
-</div>
-
-<div class="nav">
-<a href="#features">Características</a>
-<a href="#demo">Demo</a>
-</div>
-</header>
-
 <div class="container">
 
-<section class="hero">
-<div class="hero-text">
-<h1>Gestión de inventario</h1>
-<p>Controla stock, usuarios y ventas en tiempo real.</p>
-
-<div class="rating">
-<span class="star">★★★★★</span>
-<span>4.9</span>
+<div class="app-header">
+<img src="logo.png">
+<div class="app-info">
+<h1>Wintech Solutions</h1>
+<p>Sistema de gestión de inventario</p>
+</div>
 </div>
 
-<a class="btn" href="https://github.com/edwinheju-beep/WitntechSolutions/releases/download/v1.0/wintech-solutions.apk">
-Descargar app
-</a>
+<button class="btn" onclick="descargar()">Descargar</button>
+
+<div class="loader" id="loader">
+<img src="logo.png">
 </div>
 
-<video autoplay muted loop playsinline>
+<div class="video">
+<video controls>
 <source src="promo.mp4" type="video/mp4">
 </video>
-</section>
-
-<section class="section" id="features">
-<h2>Características</h2>
+</div>
 
 <div class="features">
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M16 11a4 4 0 10-8 0"/>
-<path d="M2 20c0-3 4-5 6-5s6 2 6 5"/>
-</svg>
-<div>
 <strong>Usuarios</strong>
-<p>Gestión de cuentas y permisos</p>
-</div>
+<p>Gestión de accesos y permisos</p>
 </div>
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M3 6h18M3 12h18M3 18h18"/>
-</svg>
-<div>
 <strong>Inventario</strong>
-<p>Control de stock actualizado</p>
-</div>
+<p>Control de stock en tiempo real</p>
 </div>
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M12 8v4l3 3"/>
-<circle cx="12" cy="12" r="10"/>
-</svg>
-<div>
 <strong>Ventas</strong>
 <p>Corrección de transacciones</p>
 </div>
-</div>
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M17 20h5V4H2v16h5"/>
-</svg>
-<div>
 <strong>Multiusuario</strong>
-<p>Acceso simultáneo</p>
-</div>
+<p>Uso simultáneo sin conflictos</p>
 </div>
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M12 5v14M5 12h14"/>
-</svg>
-<div>
 <strong>Productos</strong>
 <p>Gestión del catálogo</p>
 </div>
-</div>
 
 <div class="card">
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-<path d="M5 13l4 4L19 7"/>
-</svg>
-<div>
 <strong>Estabilidad</strong>
 <p>Sistema confiable</p>
 </div>
-</div>
-
-</div>
-</section>
-
-<section class="section video-demo" id="demo">
-<h2>Demostración</h2>
-<video controls>
-<source src="promo.mp4" type="video/mp4">
-</video>
-</section>
 
 </div>
 
-<footer>
-© 2026 Wintech Solutions
-<div class="dev">Developed by Edwin Juárez</div>
-</footer>
+</div>
+
+<script>
+function descargar(){
+document.getElementById("loader").style.display="flex";
+
+setTimeout(()=>{
+window.location.href="https://github.com/edwinheju-beep/WitntechSolutions/releases/download/v1.0/wintech-solutions.apk";
+},2000);
+}
+</script>
 
 </body>
 </html>
